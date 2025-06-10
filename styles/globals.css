@@ -141,6 +141,8 @@ width: 100%;
 }
 .hero-banner-container .beats-solo{
   font-size: 20px;
+  position: absolute;
+  top: 80px;
 }
 .hero-banner-container button{
    border-radius: 15px;
@@ -183,6 +185,7 @@ line-height: 1.3;
 display: flex;
 flex-direction: column;
  color: #324d67;
+ display: none;
 
 }
 .desc p{
@@ -623,204 +626,18 @@ margin-top: 160px;
 @media screen and (max-width:800px) {
   .hero-banner-container{
     height: 560px;
+
   }
+    /* .cart-wrapper {
+    overflow: hidden;
+  } */
+
   .hero-banner-image{
     width: 77%;
     height: 62%;
-    top: -2%;
-    right: -6%;
+    top: 20%;
+    right: 10%;
   }
-  .footer-banner-container{
-    height: 560px;
-    margin-top: 80px;
-  }
-  .footer-banner-image{
-    width: 77%;
-    left: 30%;
-    top: 6%;
-    height: 56%
-  }
-  .banner-desc .left h3{
-    font-weight: 900;
-    font-size: 50px;
-    margin-left: 5px;
-  }
-  .banner-desc .left p{
-    margin:18px;
-  }
-  .banner-desc .right h3{
-    font-size: 45px;
-  }
-  .banner-desc .right p{
-    font-size: 18px;
-  }
-  .banner-desc .right .company-desc{
-    font-size: 14px;
-  }
-  .banner-desc{
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  .hero-banner-container{
-    line-height: 1.3;
-  }
-  .hero-banner-container h1{
-    font-size: 50px;
-  }
- .hero-banner-container h3{
-    font-size: 40px;
-  }
-  .hero-banner-container button{
-    margin-top: 90px;
-    z-index: 10000;
-  }
-  .desc{
-   bottom: 60px;
-  }
-  .product-detail-container{
-    flex-wrap: wrap;
-    }
-  .product-detail-container .product-detail-image{
-    width: 350px;
-    height: 350px;
-  }
-  .cart-container{
-    width: 415px;
-  padding: 4px;
-  }
-  .cart-heading{
-    margin-top: 35px;
-  }
-  .product-container{
-    margin-top: 10px;
-  }
-  .product{
-    padding: 20px 5px;
-
-  }
-  .product .cart-product-image{
-    width: 25%;
-    height: 25%;
-  }
-  .buttons .add-to-cart{
-    width: 150px;
-  }
-  .buttons .buy-now{
-    width: 150px;
-  }
-  .product-detail-container{
-    margin: 20px;
-  }
-
-.item-desc .flex{
-  width: 200px;
-}
-.top{
-  flex-wrap: wrap;
-  gap: 10px;
-
-
-}
-.item-desc .bottom{
-  margin-top: 30px;
-}
-.flex h5{
-  font-size: 16px;
-   color: #324d67;
-}
-.flex h4{
-  font-size: 16px;
-   color: black;
-}
-.cart-bottom{
-  padding: 30px;
-}
-
-.total h3{
-  font-size: 20px;
-}
-.track {
-  animation: marquee 20s linear infinite;
-  width: 550%;
-}
-.success-wrapper, .cancel-wrapper{
- 
-  min-height: 69vh;
-}
-.success, .cancel {
-   width: 370px;
-  margin-top: 100px;
-  padding: 20px;
-}
-.success{
-  height: 350px;
-}
-.success h2{
-  font-size: 17px;
-}
-.btn-container{
-  width: 300px;
-  margin: auto;
-}
-
-}
-@media screen and (max-width: 800px) {
-  .hero-banner-container {
-    height: auto; /* ارتفاع تلقائي حسب المحتوى */
-    padding: 30px 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px; /* مسافة بين العناصر */
-  }
-
-  .hero-banner-image {
-    display: none; /* إخفاء الصورة */
-  }
-
-  /* تنسيق النصوص */
-  .hero-banner-container h1 {
-    font-size: 32px;
-    color: #ffffff;
-    margin: 0;
-    line-height: 1.2;
-  }
-
-  .hero-banner-container h3 {
-    font-size: 20px;
-    color: #000000;
-    margin: 10px 0;
-  }
-
-  .hero-banner-container .beats-solo {
-    font-size: 16px;
-    color: #A8D602;
-    font-weight: 500;
-  }
-
-  /* تنسيق الزر */
-  .hero-banner-container button {
-    width: 80%;
-    max-width: 300px;
-    padding: 15px 0;
-    font-size: 18px;
-    background: #A8D602;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    margin-top: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-  }
-
-
-  /* إخفاء الوصف الجانبي */
-  .desc {
-    display: none;
-  }
-
-  
   .footer-banner-container{
     height: 560px;
     margin-top: 80px;
@@ -830,7 +647,7 @@ margin-top: 160px;
     left: 30%;
     top: 6%;
     height: 56%;
-    display: none
+    display: none;
   }
   .banner-desc .left h3{
     font-weight: 900;
@@ -858,16 +675,33 @@ margin-top: 160px;
   }
   .hero-banner-container h1{
     font-size: 50px;
+    position: absolute;
+    top: 20px;
   }
  .hero-banner-container h3{
     font-size: 40px;
+    position: absolute;
+    top: 80px;
+    left: 20px;
   }
   .hero-banner-container button{
     margin-top: 90px;
     z-index: 10000;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .hero-banner-container .beats-solo{
+    position: absolute;
+    top: 5%;
+    left: 20px;
+    display: none;
   }
   .desc{
-   bottom: 60px;
+   bottom: 40px;
+   display: flex;
+  
   }
   .product-detail-container{
     flex-wrap: wrap;
@@ -877,7 +711,7 @@ margin-top: 160px;
     height: 350px;
   }
   .cart-container{
-    width: 415px;
+    max-width: 400px;
   padding: 4px;
   }
   .cart-heading{
@@ -954,5 +788,84 @@ margin-top: 160px;
   width: 300px;
   margin: auto;
 }
+.product-card{
+  justify-items: center;
+}
 
+}
+/* تغليف المنتجات لتحديد منطقة السكروول */
+.cart-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 0 10px;
+  margin-bottom: 10px;
+}
+
+/* الحاوية الرئيسية للكارت */
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  width: 600px;
+  background-color: white;
+  float: right;
+  padding: 20px 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* جزء الدفع والثمن والزر */
+.cart-bottom {
+  background: #fff;
+  padding: 15px 10px;
+  border-top: 1px solid #ccc;
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* اختيارات الدفع */
+.payment-methods {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin: 15px 0;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+/* ستايل الخيار الواحد */
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+}
+
+.payment-option:hover {
+  background-color: #d6f14c;
+  box-shadow: 0 4px 8px rgba(168, 214, 2, 0.4);
+}
+
+.payment-option input {
+  margin-right: 12px;
+  cursor: pointer;
+  accent-color: #A8D602;
+}
+
+.payment-option input:checked + label,
+.payment-option input:checked {
+  background-color: #A8D602;
+  color: white;
+  box-shadow: 0 4px 8px rgba(168, 214, 2, 0.6);
 }
