@@ -1,21 +1,21 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import {
   AiOutlineMinus,
   AiOutlinePlus,
-  AiFillDelete,
   AiOutlineLeft,
   AiOutlineShopping,
 } from "react-icons/ai";
-
 import { TiDeleteOutline } from "react-icons/ti";
 import toast from "react-hot-toast";
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
 import getStripe from "../lib/getStripe";
 
-const cart = () => {
+const Cart = () => {
   const cartRef = useRef();
+  const router = useRouter();
   const {
     totalPrice,
     totalQuantities,
@@ -24,6 +24,10 @@ const cart = () => {
     toggleCartItemQuantity,
     onRemove,
   } = useStateContext();
+
+  // حالة لتحديد طريقة الدفع
+  const [paymentMethod, setPaymentMethod] = useState("stripe");
+
   const handleCheckout = async () => {
     const stripe = await getStripe();
     const response = await fetch("/api/stripe", {
@@ -42,6 +46,12 @@ const cart = () => {
     toast.loading("Redirecting...");
 
     stripe.redirectToCheckout({ sessionId: data.id });
+  };
+
+  // دالة لإغلاق الكارت والانتقال لصفحة الدفع عند الاستلام
+  const handleCODClick = () => {
+    setShowCart(false);
+    router.push("/cod-form");
   };
 
   return (
@@ -67,7 +77,6 @@ const cart = () => {
                 onClick={() => setShowCart(false)}
                 className="btn"
               >
-                {" "}
                 Continue Shopping
               </button>
             </Link>
@@ -81,6 +90,7 @@ const cart = () => {
                 <img
                   src={urlFor(item?.image[0])}
                   className="cart-product-image"
+                  alt={item.name}
                 />
                 <div className="item-desc">
                   <div className="flex top">
@@ -121,16 +131,49 @@ const cart = () => {
               </div>
             ))}
         </div>
+
         {cartItems.length >= 1 && (
           <div className="cart-bottom">
             <div className="total">
               <h3>Subtotal:</h3>
               <h3>EG{totalPrice}</h3>
             </div>
-            <div className="btn-container">
-              <button type="button" className="btn" onClick={handleCheckout}>
+
+            <div className="payment-methods">
+              <h4>Select Payment Method:</h4>
+              <label className="payment-option">
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  value="stripe"
+                  checked={paymentMethod === "stripe"}
+                  onChange={() => setPaymentMethod("stripe")}
+                />
                 Pay with Stripe
-              </button>
+              </label>
+
+              <label className="payment-option">
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  value="cod"
+                  checked={paymentMethod === "cod"}
+                  onChange={() => setPaymentMethod("cod")}
+                />
+                Cash on Delivery
+              </label>
+            </div>
+
+            <div className="btn-container">
+              {paymentMethod === "stripe" ? (
+                <button type="button" className="btn" onClick={handleCheckout}>
+                  Pay with Stripe
+                </button>
+              ) : (
+                <button type="button" className="btn" onClick={handleCODClick}>
+                  Confirm Order
+                </button>
+              )}
             </div>
           </div>
         )}
@@ -139,4 +182,4 @@ const cart = () => {
   );
 };
 
-export default cart;
+export default Cart;
